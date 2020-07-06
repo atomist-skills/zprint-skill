@@ -7,15 +7,15 @@ Format your Clojure and ClojureScript code using [zprint][zprint], get pull requ
 # What it's useful for
 
 The zprint tool can help your team use consistent formatting for all Clojure and ClojureScript files.
-This skill watches all your team' commits to GitHub, and uses zprint to ensure that the code follows consistent formatting guidelines. 
+This skill watches all your team' commits to GitHub, and uses zprint to ensure that the code follows consistent formatting guidelines.
 If possibles fixes are detected, the skill will send you those fixes in a pull request, or by commiting directly to a branch.
 
 There are already great ways to use zprint from your local development environment.
-However, this skill validates and fixes unformatted commits that have still managed to slip through cracks. 
+However, this skill validates and fixes unformatted commits that have still managed to slip through cracks.
 If you never push unformatted commits, then you won't notice this skill is even running.
 
 It does not rely on any project configuration in the repository (e.g it doesn't matter whether you're using
-deps.edn, or leiningen project.clj, or boot).  It runs whenever commits are pushed to GitHub.
+deps.edn, or leiningen project.clj, or boot). It runs whenever commits are pushed to GitHub.
 
 Code reviews are so much better when your team is using the same formatting.  
 And obviously, a huge thanks to [zprint][zprint]!
@@ -43,8 +43,8 @@ At least one repository must be selected.
 
 2.  **Specify formatting rules configuration**
 
-    Optionally, customize the configuration that the `zprint` library will use by adding your custom rules here.  The 
-    zprint documentation providers several [`:style`s that you can choose from](https://github.com/kkinnear/zprint/blob/master/doc/reference.md#available-styles).  Choosing one
+    Optionally, customize the configuration that the `zprint` library will use by adding your custom rules here. The
+    zprint documentation providers several [`:style`s that you can choose from](https://github.com/kkinnear/zprint/blob/master/doc/reference.md#available-styles). Choosing one
     of these styles is a great way to standardize formatting across all of your Clojure projects.
 
     ![screenshot2](docs/images/screenshot2.png)
