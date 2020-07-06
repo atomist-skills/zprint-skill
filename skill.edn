@@ -1,0 +1,59 @@
+{:description "Maintain consistent formatting of your Clojure code across repositories, get fixes",
+ :categories ["CODE_REVIEW"],
+ :license "Apache-2.0",
+ :resourceProviders
+ [{:name "github",
+   :description "GitHub",
+   :typeName "GitHubAppResourceProvider",
+   :minRequired 1,
+   :maxAllowed 1}],
+ :displayName "zprint",
+ :name "zprint-skill",
+ :author "Atomist",
+ :dispatch "multiple",
+ :iconUrl
+ "https://clojure.org/images/clojure-logo-120b.png",
+ :homepageUrl "https://github.com/atomist-skills/zprint-skill",
+ :technologies ["CLOJURE"]
+ :parameters
+ [{:singleChoice
+   {:description
+    "Run cljfmt fix and choose how fixes should be committed back into the repository",
+    :displayName "Fix Formatting",
+    :name "fix",
+    :required true,
+    :options
+    [{:description
+      "Commit to any branch",
+      :text "Commit to any branch",
+      :value "onBranch"}
+     {:description
+      "Commit to default branch only",
+      :text "Commit to default branch only",
+      :value "onDefaultBranch"}
+     {:description "Raise pull request for default branch only; commit to other branches",
+      :text "Raise pull request for default branch only; commit to other branches",
+      :value "inPROnDefaultBranch"}
+     {:description "Raise pull request for default branch only",
+      :text "Raise pull request for any branch",
+      :value "inPR"}]}}
+  {:string
+   {:description
+    "Add your own [configuration](https://github.com/weavejester/cljfmt#configuration). Formatting rules specified here will be used in addition to the [defaults from `cljfmt`](https://github.com/weavejester/cljfmt/blob/master/cljfmt/resources/cljfmt/indents/clojure.clj)",
+    :displayName "Configuration",
+    :name "config",
+    :lineStyle "multiple",
+    :required false}}
+  {:repoFilter
+   {:description "The set of Repositories.",
+    :displayName "Repository Scope",
+    :name "scope",
+    :required false}}],
+ :namespace "atomist",
+ :artifacts
+ {:gcf
+  [{:name "zprint",
+    :entryPoint "eventhandler",
+    :memory 1024, 
+    :runtime "nodejs10", 
+    :timeout 360}]}}
