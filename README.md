@@ -68,8 +68,8 @@ At least one repository must be selected.
 
 1. **Enjoy automatic formatting!**
 
-To create feature requests or bug reports, create an [issue in the repository for this skill](https://github.com/atomist-skills/cljfmt-skill/issues).
-See the [code](https://github.com/atomist-skills/cljfmt-skill) for the skill.
+To create feature requests or bug reports, create an [issue in the repository for this skill](https://github.com/atomist-skills/zprint-skill/issues).
+See the [code](https://github.com/atomist-skills/zprint-skill) for the skill.
 
 [zprint]: https://github.com/kkinnear/zprint
 
