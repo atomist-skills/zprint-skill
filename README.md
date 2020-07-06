@@ -6,12 +6,23 @@ Format your Clojure and ClojureScript code using [zprint][zprint], get pull requ
 
 # What it's useful for
 
-Keep consistent formatting of your Clojure code across repositories.
+The zprint tool can help your team use consistent formatting for all Clojure and ClojureScript files.
+This skill watches all your team' commits to GitHub, and uses zprint to ensure that the code follows consistent formatting guidelines. 
+If possibles fixes are detected, the skill will send you those fixes in a pull request, or by commiting directly to a branch.
 
--   Use the same zprint configuration across all of your Clojure repos
--   Get commits or pull requests with fixes
+There are already great ways to use zprint from your local development environment.
+However, this skill validates and fixes unformatted commits that have still managed to slip through cracks. 
+If you never push unformatted commits, then you won't notice this skill is even running.
+
+It does not rely on any project configuration in the repository (e.g it doesn't matter whether you're using
+deps.edn, or leiningen project.clj, or boot).  It runs whenever commits are pushed to GitHub.
+
+Code reviews are so much better when your team is using the same formatting.  
+And obviously, a huge thanks to [zprint][zprint]!
 
 # Before you get started
+
+1.  **GitHub**
 
 The **GitHub** integration must be configured in order to use this skill.
 At least one repository must be selected.
@@ -32,13 +43,9 @@ At least one repository must be selected.
 
 2.  **Specify formatting rules configuration**
 
-    Optionally, customize the configuration that the `zprint` library will use by adding your custom rules here. In practice,
-    the "do nothing" approach works quite well. The
-    [defaults from `cljfmt`](https://github.com/weavejester/cljfmt/blob/master/cljfmt/resources/cljfmt/indents/clojure.clj)
-    are a great start.
-
-    The [cljfmt configuration documentation][configuration] outlines different ways to control how the code
-    is formatted.
+    Optionally, customize the configuration that the `zprint` library will use by adding your custom rules here.  The 
+    zprint documentation providers several [`:style`s that you can choose from](https://github.com/kkinnear/zprint/blob/master/doc/reference.md#available-styles).  Choosing one
+    of these styles is a great way to standardize formatting across all of your Clojure projects.
 
     ![screenshot2](docs/images/screenshot2.png)
 
@@ -61,20 +68,10 @@ At least one repository must be selected.
 
 1. **Enjoy automatic formatting!**
 
-There are already great ways to integrate [cljfmt][cljfmt] into your local development flow. See the docs on
-[editor support here][editor-support]. However, this skill validates and fixes unformatted commits that still manage
-to be pushed. If you never push unformatted commits, then you won't notice this skill is even running.
-
-It does not rely on any project configuration (e.g deps.edn or leiningen project.clj). Instead,
-it runs `cljfmt fix` whenever the a repository is updated.
-
-Code reviews are so much better when your team is using the same formatting. And a huge thanks to [cljfmt](cljfmt)!
-
 To create feature requests or bug reports, create an [issue in the repository for this skill](https://github.com/atomist-skills/cljfmt-skill/issues).
 See the [code](https://github.com/atomist-skills/cljfmt-skill) for the skill.
 
 [zprint]: https://github.com/kkinnear/zprint
-[configuration]: https://github.com/weavejester/cljfmt#configuration
 
 <!---atomist-skill-readme:end--->
 

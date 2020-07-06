@@ -78,27 +78,3 @@
                                      :data {:Push [{:branch "non-master"
                                                     :repo {:defaultBranch "master"}}]}})))))
            (done))))
-
-(deftest cljfmt-config-success
-  (let [opts {:indents {'defn [[:inner 0]]}}]
-    (async done
-           (go
-             (is (= opts
-                    (:cljfmt-opts (<! ((main/check-cljfmt-config #(go %))
-                                       {:config (pr-str opts)})))))
-             (done)))))
-
-(deftest cljfmt-config-bad-edn
-  (async done
-         (go
-           (is (= {:failure "{bad edn :: & is not a valid cljfmt map"}
-                  (:api/status
-                   (<! ((main/check-cljfmt-config #(go %))
-                        {:config "{bad edn :: &"
-                         :correlation_id "corrid"
-                         :api_version "1"
-                         :sendreponse (fn [& args] (go (first args)))})))))
-           (done))))
-
-(enable-console-print!)
-(run-tests)

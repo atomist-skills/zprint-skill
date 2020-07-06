@@ -15,7 +15,7 @@
   (let [merged-opts (merge {:configured? true} opts)
         edited-files (->> (for [f (find-files dir) :let [original (slurp f)]]
                             (let [[k v e] (try
-                                            [:formatted (zprint/zprint-file-str f "skill" merged-opts)]
+                                            [:formatted (zprint/zprint-file-str original "skill" merged-opts)]
                                             (catch :default ex
                                               [:failed-to-process f ex]))]
                               (case k
@@ -23,9 +23,8 @@
                                              (log/info "Reformatting " f)
                                              (spit f v)
                                              f)
-                                :failed-to-process (log/warnf "cljformat could not process %s - %s" v e))))
+                                :failed-to-process (log/warnf "zprint could not process %s - %s" v e))))
                           (filter identity))]
     (if (> (count edited-files) 0)
       (log/infof "edited %d files" (count edited-files))
       (log/info "No clojure files formatted"))))
-
