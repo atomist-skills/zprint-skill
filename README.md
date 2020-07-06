@@ -33,11 +33,11 @@ At least one repository must be selected.
 
     Choose one of these options:
 
-    1. `Commit to default branch only` - only format the default branch, and push fixes directly to the default branch
-    2. `Commit to any branch` - push formatting fixes to all branches
-    3. `Raise pull request for default branch only; commit to other branches` - formatting fixes for the default branch
+    * `Commit to default branch only` - only format the default branch, and push fixes directly to the default branch
+    * `Commit to any branch` - push formatting fixes to all branches
+    * `Raise pull request for default branch only; commit to other branches` - formatting fixes for the default branch
        should raise PRs. Fixes to other branches should commit directly to the branch.
-    4. `Raise pull request for any branch` - always use Pull Requests.
+    * `Raise pull request for any branch` - always use Pull Requests.
 
     ![screenshot1](docs/images/screenshot1.png)
 
