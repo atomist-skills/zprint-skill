@@ -17,7 +17,7 @@
  :parameters
  [{:singleChoice
    {:description
-    "Run cljfmt fix and choose how fixes should be committed back into the repository",
+    "Choose how zprint fixes should be committed back into the repository",
     :displayName "Fix Formatting",
     :name "fix",
     :required true,
@@ -38,7 +38,7 @@
       :value "inPR"}]}}
   {:string
    {:description
-    "Add your own [configuration](https://github.com/weavejester/cljfmt#configuration). Formatting rules specified here will be used in addition to the [defaults from `cljfmt`](https://github.com/weavejester/cljfmt/blob/master/cljfmt/resources/cljfmt/indents/clojure.clj)",
+    "Add your own zprint configuration.  [See zprint docs for details](https://github.com/kkinnear/zprint/blob/master/doc/reference.md#introduction-to-configuration).",
     :displayName "Configuration",
     :name "config",
     :lineStyle "multiple",
