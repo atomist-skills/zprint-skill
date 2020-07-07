@@ -3,6 +3,6 @@
 
 (def module-name "zprint-skill")
 (def path ".")
-(def version "0.1.5")
-(def tag "0.1.5")
-(def generated-at "2020-07-07T00:33:53Z")
+(def version "0.1.6")
+(def tag "0.1.6")
+(def generated-at "2020-07-07T01:19:52Z")
