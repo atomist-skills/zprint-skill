@@ -64,7 +64,7 @@
          (assoc
           request
           :atomist.gitflows/configuration
-          {:branch (gstring/format "cljfmt-%s"
+          {:branch (gstring/format "zprint-%s"
                                    (-> request
                                        :ref
                                        :branch)),
@@ -73,11 +73,11 @@
                               :branch),
            :body
            (gstring/format
-            "running [cljfmt fix](https://github.com/weavejester/cljfmt) with configuration %s"
+            "running [zprint fix](https://github.com/atomist-skills/zprint-skill) with configuration %s"
             (-> request
                 :configuration
                 :name)),
-           :title "cljfmt fix",
+           :title "zprint fix",
            :type :in-pr})))
        (or (= "onBranch" (:fix request))
            (and (= "inPROnDefaultBranch" (:fix request))
@@ -87,7 +87,7 @@
        (<! (handler
             (assoc request
                    :atomist.gitflows/configuration
-                   {:message "running cljfmt fix", :type :commit-then-push})))
+                   {:message "running zprint fix", :type :commit-then-push})))
        :else (<! (api/finish request
                              :success (gstring/format "nothing to do: %s policy"
                                                       (:fix request))
