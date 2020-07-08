@@ -11,7 +11,7 @@
       [f])))
 
 (defn run
-  "Format files with cljfmt"
+  "Format files with zprint"
   [dir opts]
   (let [merged-opts (merge {:configured? true} opts)
         edited-files
