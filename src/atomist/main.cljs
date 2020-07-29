@@ -55,43 +55,43 @@
   [handler]
   (fn [request]
     (go
-     (cond
-       (or (= "inPR" (:fix request))
-           (and (= "inPROnDefaultBranch" (:fix request))
-                (is-default-branch? request)))
-       (<!
-        (handler
-         (assoc
-          request
-          :atomist.gitflows/configuration
-          {:branch (gstring/format "zprint-%s"
-                                   (-> request
-                                       :ref
-                                       :branch)),
-           :target-branch (-> request
-                              :ref
-                              :branch),
-           :body
-           (gstring/format
-            "running [zprint fix](https://github.com/atomist-skills/zprint-skill) with configuration %s"
-            (-> request
-                :configuration
-                :name)),
-           :title "zprint fix",
-           :type :in-pr})))
-       (or (= "onBranch" (:fix request))
-           (and (= "inPROnDefaultBranch" (:fix request))
-                (not (is-default-branch? request)))
-           (and (= "onDefaultBranch" (:fix request))
-                (is-default-branch? request)))
-       (<! (handler
-            (assoc request
-                   :atomist.gitflows/configuration
-                   {:message "running zprint fix", :type :commit-then-push})))
-       :else (<! (api/finish request
-                             :success (gstring/format "nothing to do: %s policy"
-                                                      (:fix request))
-                             :visibility :hidden))))))
+      (cond
+        (or (= "inPR" (:fix request))
+            (and (= "inPROnDefaultBranch" (:fix request))
+                 (is-default-branch? request)))
+        (<!
+         (handler
+          (assoc
+           request
+           :atomist.gitflows/configuration
+           {:branch (gstring/format "zprint-%s"
+                                    (-> request
+                                        :ref
+                                        :branch))
+            :target-branch (-> request
+                               :ref
+                               :branch)
+            :body
+            (gstring/format
+             "running [zprint fix](https://github.com/atomist-skills/zprint-skill) with configuration %s"
+             (-> request
+                 :configuration
+                 :name))
+            :title "zprint fix"
+            :type :in-pr})))
+        (or (= "onBranch" (:fix request))
+            (and (= "inPROnDefaultBranch" (:fix request))
+                 (not (is-default-branch? request)))
+            (and (= "onDefaultBranch" (:fix request))
+                 (is-default-branch? request)))
+        (<! (handler
+             (assoc request
+                    :atomist.gitflows/configuration
+                    {:message "running zprint fix", :type :commit-then-push})))
+        :else (<! (api/finish request
+                              :success (gstring/format "nothing to do: %s policy"
+                                                       (:fix request))
+                              :visibility :hidden))))))
 
 (defn ^:export handler
   "handler

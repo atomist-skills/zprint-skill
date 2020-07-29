@@ -7,32 +7,32 @@
   (async
    done
    (go
-    (is
-     (=
-      {:type :in-pr,
-       :title "cljfmt fix",
-       :branch "cljfmt-hey",
-       :target-branch "hey",
-       :body
-       "running [cljfmt fix](https://github.com/weavejester/cljfmt) with configuration config"}
-      (:atomist.gitflows/configuration
-       (<! ((main/check-configuration #(go %))
-            {:fix "inPR",
-             :ref {:branch "hey"},
-             :configuration {:name "config"},
-             :data {:Push [{:branch "master",
-                            :repo {:defaultBranch "master"}}]}})))))
-    (done))))
+     (is
+      (=
+       {:type :in-pr
+        :title "cljfmt fix"
+        :branch "cljfmt-hey"
+        :target-branch "hey"
+        :body
+        "running [cljfmt fix](https://github.com/weavejester/cljfmt) with configuration config"}
+       (:atomist.gitflows/configuration
+        (<! ((main/check-configuration #(go %))
+             {:fix "inPR"
+              :ref {:branch "hey"}
+              :configuration {:name "config"}
+              :data {:Push [{:branch "master"
+                             :repo {:defaultBranch "master"}}]}})))))
+     (done))))
 
 (deftest check-default-branch-inPRWithDefaultBranch
   (async done
          (go (is (= :in-pr
                     (:type (:atomist.gitflows/configuration
                             (<! ((main/check-configuration #(go %))
-                                 {:fix "inPROnDefaultBranch",
-                                  :ref {:branch "hey"},
-                                  :configuration {:name "config"},
-                                  :data {:Push [{:branch "master",
+                                 {:fix "inPROnDefaultBranch"
+                                  :ref {:branch "hey"}
+                                  :configuration {:name "config"}
+                                  :data {:Push [{:branch "master"
                                                  :repo {:defaultBranch
                                                         "master"}}]}}))))))
              (done))))
@@ -42,10 +42,10 @@
          (go (is (= :commit-then-push
                     (:type (:atomist.gitflows/configuration
                             (<! ((main/check-configuration #(go %))
-                                 {:fix "inPROnDefaultBranch",
-                                  :ref {:branch "hey"},
-                                  :configuration {:name "config"},
-                                  :data {:Push [{:branch "non-master",
+                                 {:fix "inPROnDefaultBranch"
+                                  :ref {:branch "hey"}
+                                  :configuration {:name "config"}
+                                  :data {:Push [{:branch "non-master"
                                                  :repo {:defaultBranch
                                                         "master"}}]}}))))))
              (done))))
@@ -55,11 +55,11 @@
          (go (is (= :commit-then-push
                     (:type (:atomist.gitflows/configuration
                             (<! ((main/check-configuration #(go %))
-                                 {:fix "onBranch",
-                                  :sendreponse (fn [& args] (go true)),
-                                  :ref {:branch "hey"},
-                                  :configuration {:name "config"},
-                                  :data {:Push [{:branch "non-master",
+                                 {:fix "onBranch"
+                                  :sendreponse (fn [& args] (go true))
+                                  :ref {:branch "hey"}
+                                  :configuration {:name "config"}
+                                  :data {:Push [{:branch "non-master"
                                                  :repo {:defaultBranch
                                                         "master"}}]}}))))))
              (done))))
@@ -67,16 +67,16 @@
 (deftest check-on-default-branch
   (async
    done
-   (go (is (= {:success "nothing to do: onDefaultBranch policy",
+   (go (is (= {:success "nothing to do: onDefaultBranch policy"
                :visibility :hidden}
               (:api/status
                (<! ((main/check-configuration #(go %))
-                    {:fix "onDefaultBranch",
-                     :sendreponse (fn [& args] (go (first args))),
-                     :ref {:branch "hey"},
-                     :configuration {:name "config"},
-                     :correlation_id "corrid",
-                     :api_version "1",
-                     :data {:Push [{:branch "non-master",
+                    {:fix "onDefaultBranch"
+                     :sendreponse (fn [& args] (go (first args)))
+                     :ref {:branch "hey"}
+                     :configuration {:name "config"}
+                     :correlation_id "corrid"
+                     :api_version "1"
+                     :data {:Push [{:branch "non-master"
                                     :repo {:defaultBranch "master"}}]}})))))
        (done))))
