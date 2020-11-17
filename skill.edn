@@ -24,9 +24,8 @@
  :displayName "zprint",
  :name "zprint-skill",
  :author "Atomist",
- :dispatch "multiple",
  :categories ["CODE_MAINTENANCE"],
- :iconUrl "https://clojure.org/images/clojure-logo-120b.png",
+ :iconUrl "https://raw.githubusercontent.com/atomist-skills/zprint-skill/master/docs/images/icon.svg",
  :homepageUrl "https://github.com/atomist-skills/zprint-skill",
  :parameters
  [{:singleChoice
